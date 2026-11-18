@@ -1,0 +1,14 @@
+{
+  "name": "directcase",
+  "owner": { "name": "DirectCase", "email": "support@directcase.ai", "url": "https://www.directcase.ai/" },
+  "metadata": {
+    "description": "DirectCase plugins for legal research over national and EU law, backed by the DirectCase Legal Search MCP server."
+  },
+  "plugins": [
+    {
+      "name": "legal-plugin",
+      "source": "./",
+      "description": "Legal research over national and EU law: legislation, case law and regulatory decisions, with linked sources."
+    }
+  ]
+}

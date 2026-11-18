@@ -1,0 +1,25 @@
+{
+  "name": "legal-plugin",
+  "version": "1.0.0",
+  "description": "Legal research over national and EU law: legislation, case law and regulatory decisions, with linked sources.",
+  "author": { "name": "DirectCase", "url": "https://www.directcase.ai/" },
+  "homepage": "https://www.directcase.ai/gb/en/docs/mcp/",
+  "repository": "https://github.com/directcase/legal-mcp",
+  "license": "Apache-2.0",
+  "keywords": ["legal", "law", "case-law", "legislation", "eu-law", "legal-research", "legal-ai", "citations", "ecli", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.codex-plugin/mcp_servers.json",
+  "interface": {
+    "displayName": "DirectCase Legal Search",
+    "shortDescription": "Research national and EU legislation and case law with linked citations.",
+    "longDescription": "DirectCase Legal Search connects Codex to legislation, case law and regulatory decisions of national and European law. It returns the wording of a provision held for a given date, looks up decisions by case number or ECLI, and links each result to its document so citations can be checked.",
+    "developerName": "DirectCase",
+    "category": "Productivity",
+    "capabilities": ["Legal research", "Statute lookup", "Citation verification"],
+    "defaultPrompt": [
+      "Find CJEU case law on the right to be forgotten and summarize the key holdings with citations",
+      "Quote Article 6(1)(f) GDPR and show how courts have interpreted legitimate interest",
+      "Check the case citations in this document against DirectCase sources"
+    ]
+  }
+}
