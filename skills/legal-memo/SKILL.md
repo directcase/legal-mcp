@@ -14,6 +14,25 @@ authority would most likely decide. It is an internal assessment, not a
 submission for one party. Every legal statement rests on a source a tool
 returned.
 
+## Legislation tools
+
+Statute tools are named per jurisdiction: `get_law_<country>` returns the
+wording of one provision and `search_law_<country>` finds provisions by their
+words, where `<country>` is the account's country code (for example
+`get_law_cz`, `get_law_sk`). Accounts in EU member states also have
+`get_law_eu` and `search_law_eu` for EU law. `get_entitlements` lists the exact
+names in `available_tools`.
+
+- Name the act and the provision with the parameters the tool's schema
+  lists; they follow the citation units of that law (for example `zakon` and
+  `paragraf`, or `celex` and the article for EU law).
+- Pass `as_of` for a past date and `history: true` for earlier wordings. For
+  EU law pass `language` for the language of the wording.
+- Take the wording from `text`, its validity from `valid_from` and
+  `valid_to`, and the link from `url`.
+- If the account has no `get_law_` tool for a jurisdiction, quote the
+  legislation from `search_law_parallel` results and link their `url`.
+
 ## Workflow
 
 1. **Scope.** Confirm the question, the jurisdiction, the relevant date and
@@ -29,10 +48,10 @@ returned.
 
    Each of these tools can be called once per conversation. If one was
    already used in this conversation, reuse its results and continue with
-   `legal-search:search_keyword`, `legal-search:search_similar` and `legal-search:search_law_text`.
+   `legal-search:search_keyword`, `legal-search:search_similar` and `search_law_<country>`.
 3. **Verify.** Read the wording of every provision you will cite with
-   `legal-search:get_law_provision` (with `date` for past facts; `eu-<language>` for EU
-   law). Find each decision known by its case number or ECLI with
+   `get_law_<country>` or, for EU law, `get_law_eu` (with `as_of` for past
+   facts), and link it with `url`. Find each decision known by its case number or ECLI with
    `legal-search:search_identifier`, and open every decision you rely on with
    `legal-search:get_document`. Search summaries are leads, not sources.
 4. **Weigh the sources.** They do not carry the same weight. Legislation

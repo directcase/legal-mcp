@@ -21,34 +21,48 @@ gives it in `country`. You check the law and case law of that country, plus
 EU law. A citation of another country's law gets the status
 `other jurisdiction`; never report it as missing.
 
+## Legislation tools
+
+Statute tools are named per jurisdiction: `get_law_<country>` returns the
+wording of one provision and `search_law_<country>` finds provisions by their
+words, where `<country>` is the account's country code (for example
+`get_law_cz`, `get_law_sk`). Accounts in EU member states also have
+`get_law_eu` and `search_law_eu` for EU law. `get_entitlements` lists the exact
+names in `available_tools`.
+
+- Name the act and the provision with the parameters the tool's schema
+  lists; they follow the citation units of that law (for example `zakon` and
+  `paragraf`, or `celex` and the article for EU law).
+- Pass `as_of` for a past date and `history: true` for earlier wordings. For
+  EU law pass `language` for the language of the wording.
+- Take the wording from `text`, its validity from `valid_from` and
+  `valid_to`, and the link from `url`.
+- If the account has no `get_law_` tool for a jurisdiction, quote the
+  legislation from `search_law_parallel` results and link their `url`.
+
 ## Workflow
 
 1. **Collect the citations by type.** Read the whole document and sort what
    it cites into provisions, case numbers or ECLIs, and case names without a
-   number. Each tool below takes up to 20 items per call, so one call per
-   type usually covers a document; split longer lists into calls of 20. For
-   every citation keep:
+   number. `search_identifier` and `get_document` take up to 20 items per
+   call; split longer lists into calls of 20. Provisions are read one per
+   call. For every citation keep:
    - the sentence that relies on it, with the paragraph around it,
    - whether the document puts the source's words in quotation marks,
    - the date the document's facts relate to (today if it gives none).
-2. **Provisions.** Send all provisions in one `legal-search:get_law_detail` call, each
-   with `date` set to the date from step 1 and the provision in `fragment` in
-   the notation of the country. Law of the account's country goes without
-   `jurisdiction`; EU acts go with `jurisdiction: "eu"` and `lang` (the
-   document's language). Take the wording from `text` and the link from
-   `viewer_url`, or `url` where there is no `viewer_url`.
-   - For each reference with `found: false`, call `legal-search:get_law_provision` with the
-     citation as written (for EU law with `country: "eu-<lang>"`) to learn
-     why. `reason: node_not_found` means the act exists without that
-     provision: offer the existing provision in `closest` where the result
-     has it, otherwise the paths in `nearest`. With `act_not_found` or
-     `unparsed`, rephrase once with the act's number or full title.
+2. **Provisions.** Read each provision with `get_law_<country>` (EU acts:
+   `get_law_eu` with `celex` and `language` set to the document's language),
+   with `as_of` set to the date from step 1. Take the wording from `text`
+   and the link from `url`.
+   - If the result has `exists: false`, the act was found without that
+     provision: the status is `no such provision`.
+   - If the act is not recognised, find it with `search_law_<country>` (EU:
+     `search_law_eu`) and repeat the call once with its `code`.
 3. **Past wording.** When the date from step 1 lies in the past, check for
    each act whether the result really comes from a version in force on that
-   date: the version date in `iri`, or `effective_from` (`valid_from`) on or
-   before the date with `effective_to` (`valid_to`) empty or after it.
+   date: `valid_from` on or before the date and `valid_to` empty or after it.
    - If it does, the past wording is available. Repeat the call once without
-     `date` and note every provision whose wording has changed since.
+     `as_of` and note every provision whose wording has changed since.
    - If the result carries no such date, or a later one, only the current
      wording is available for that act. Check against the current wording
      and give today's date in `Wording as of`. If the user explicitly asked
@@ -107,7 +121,7 @@ table, one row per citation, in the order of the document:
 - **Wording as of:** for a provision, the date whose wording you checked
   (today's date when only the current wording is available), with "changed
   since" when today's wording differs; for a decision, the decision date.
-- **Link:** `viewer_url` or `url` from the tool result.
+- **Link:** `url` from the tool result.
 
 Status:
 - `found, no discrepancy noted`: the source was found and the passage read
