@@ -6,7 +6,7 @@
   },
   "plugins": [
     {
-      "name": "legal-plugin",
+      "name": "directcase-legal-search",
       "source": "./",
       "description": "Legal research over national and EU law: legislation, case law and regulatory decisions, with linked sources."
     }

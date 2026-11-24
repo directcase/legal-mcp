@@ -1,14 +1,14 @@
 {
-  "name": "legal-plugin",
+  "name": "directcase-legal-search",
   "description": "Legal research over national and EU law: legislation, case law and regulatory decisions, with linked sources.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": { "name": "DirectCase", "url": "https://www.directcase.ai/", "email": "support@directcase.ai" },
   "homepage": "https://www.directcase.ai/gb/en/docs/mcp/",
   "repository": "https://github.com/directcase/legal-mcp",
   "license": "Apache-2.0",
   "keywords": ["legal", "law", "case-law", "legislation", "eu-law", "legal-research", "legal-ai", "citations", "ecli", "mcp"],
   "mcpServers": {
-    "legal-search": {
+    "directcase": {
       "type": "http",
       "url": "https://mcp.directcase.ai/"
     }

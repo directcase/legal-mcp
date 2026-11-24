@@ -40,20 +40,20 @@ names in `available_tools`.
    missing, list it as an assumption.
 2. **Research.** Search all three source types, each with one call of two
    to four focused `queries`:
-   - legislation with `legal-search:search_law_parallel` (with `date` for past facts),
-   - case law with `legal-search:search_caselaw_parallel`,
-   - regulators with `legal-search:search_regulatory_parallel` when the matter falls in
+   - legislation with `directcase:search_law_parallel` (with `date` for past facts),
+   - case law with `directcase:search_caselaw_parallel`,
+   - regulators with `directcase:search_regulatory_parallel` when the matter falls in
      a regulated area (for example energy, competition, financial services
      or data protection).
 
    Each of these tools can be called once per conversation. If one was
    already used in this conversation, reuse its results and continue with
-   `legal-search:search_keyword`, `legal-search:search_similar` and `search_law_<country>`.
+   `directcase:search_keyword`, `directcase:search_similar` and `search_law_<country>`.
 3. **Verify.** Read the wording of every provision you will cite with
    `get_law_<country>` or, for EU law, `get_law_eu` (with `as_of` for past
    facts), and link it with `url`. Find each decision known by its case number or ECLI with
-   `legal-search:search_identifier`, and open every decision you rely on with
-   `legal-search:get_document`. Search summaries are leads, not sources.
+   `directcase:search_identifier`, and open every decision you rely on with
+   `directcase:get_document`. Search summaries are leads, not sources.
 4. **Weigh the sources.** They do not carry the same weight. Legislation
    comes first, case law interprets it, and regulators' decisions and
    guidelines show how an authority applies it in practice. When they

@@ -1,9 +1,9 @@
 {
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
-  "name": "legal-plugin",
+  "name": "directcase-legal-search",
   "displayName": "DirectCase Legal Search",
   "description": "Legal research over national and EU law for lawyers: legislation, case law and regulatory decisions, every result linked to its source.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "logo": "assets/logo.png",
   "suggestedPrompts": [
     "Find CJEU case law on the right to be forgotten and summarize the key holdings with citations",

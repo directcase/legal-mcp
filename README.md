@@ -56,15 +56,15 @@ agy plugin install https://github.com/directcase/legal-mcp
 
 ```
 /plugin marketplace add directcase/legal-mcp
-/plugin install legal-plugin@directcase
+/plugin install directcase-legal-search@directcase
 ```
 
 ### OpenAI Codex
 
 ```
 codex plugin marketplace add directcase/legal-mcp
-codex plugin add legal-plugin@directcase
-codex mcp login legal-search
+codex plugin add directcase-legal-search@directcase
+codex mcp login directcase
 ```
 
 The last command opens the DirectCase sign-in in your browser. To add only the
@@ -85,7 +85,7 @@ https://www.directcase.ai/gb/en/docs/mcp/
 ## Skills
 
 Skills tell the agent how to use the tools well. They load on demand, from a
-plain request or as a slash command (in Claude Code: `/legal-plugin:legal-question`).
+plain request or as a slash command (in Claude Code: `/directcase-legal-search:legal-question`).
 
 | Skill | Use it for |
 | --- | --- |

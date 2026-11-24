@@ -34,7 +34,9 @@ start free.
 | --- | --- |
 | `.antigravity-plugin/plugin.json` | Plugin manifest |
 | `mcp_config.json` | Remote MCP server `https://mcp.directcase.ai/` (Streamable HTTP) |
-| `skills/legal-question/SKILL.md` | How the agent should research and cite |
+| `skills/legal-question/SKILL.md` | A legal question answered from legislation and case law, with linked sources |
+| `skills/citation-check/SKILL.md` | Every citation in a document checked against DirectCase sources, as a table |
+| `skills/legal-memo/SKILL.md` | A structured legal memo with linked sources |
 | `assets/logo.png` | Plugin icon |
 
 ## Links
