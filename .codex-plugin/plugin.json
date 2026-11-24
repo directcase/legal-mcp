@@ -1,6 +1,6 @@
 {
-  "name": "legal-plugin",
-  "version": "1.0.1",
+  "name": "directcase-legal-search",
+  "version": "1.1.0",
   "description": "Legal research over national and EU law: legislation, case law and regulatory decisions, with linked sources.",
   "author": { "name": "DirectCase", "url": "https://www.directcase.ai/" },
   "homepage": "https://www.directcase.ai/gb/en/docs/mcp/",

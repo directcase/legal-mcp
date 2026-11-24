@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "legal-search": {
+    "directcase": {
       "serverUrl": "https://mcp.directcase.ai/"
     }
   }

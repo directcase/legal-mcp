@@ -16,7 +16,7 @@ is correct. You do not rewrite the document unless asked.
 
 ## Jurisdiction
 
-A DirectCase account works in one jurisdiction at a time; `legal-search:get_entitlements`
+A DirectCase account works in one jurisdiction at a time; `directcase:get_entitlements`
 gives it in `country`. You check the law and case law of that country, plus
 EU law. A citation of another country's law gets the status
 `other jurisdiction`; never report it as missing.
@@ -68,7 +68,7 @@ names in `available_tools`.
      and give today's date in `Wording as of`. If the user explicitly asked
      for a past date, open the answer with a warning that historical wording
      of that act is not available, so the check used the current wording.
-4. **Decisions.** Send all case numbers and ECLIs in one `legal-search:search_identifier`
+4. **Decisions.** Send all case numbers and ECLIs in one `directcase:search_identifier`
    call and match the results back to the inputs:
    - Compare case numbers after removing spaces and dots, ignoring case:
      `Pl. ÚS 19/93` matches `Pl.ÚS 19/93`.
@@ -82,10 +82,10 @@ names in `available_tools`.
      matches the citation; for a bare case number take the decision that
      closed the case and list the others in Note. Report `several matches`
      only when this still leaves more than one.
-   - For case names without a number use `legal-search:search_keyword` with the name in
+   - For case names without a number use `directcase:search_keyword` with the name in
      quotation marks, plus the court if the document names it.
    - Link every decision with `url` from the result.
-5. **Read and compare.** Open the decisions with `legal-search:get_document` (up to 20
+5. **Read and compare.** Open the decisions with `directcase:get_document` (up to 20
    UUIDs, pass `collection`; continue with `char_start` when `truncated`) and
    find the passage the sentence relies on. For provisions you already have
    `text`.
